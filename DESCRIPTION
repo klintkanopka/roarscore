@@ -1,0 +1,19 @@
+Package: roarscore
+Type: Package
+Title: Estimating WJ LWID Scores from ROAR-LDT Scores
+Version: 0.1.0
+Author: Klint Kanopka
+Maintainer: Klint Kanopka <kkanopka@stanford.edu>
+Description: Takes in raw item responses from a ROAR-LDT administration and 
+    turns them into an IRT-scaled score. From this and respondent age, estimates
+    WJ LWID (raw) score, WJ LWID (standard) score, and WJ LWID percentile score. 
+    These WJ estimates are done from pre-calibrated models that can be updated 
+    as more ROAR-LDT data comes in.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 2.10)
+Imports:
+    mirt
+RoxygenNote: 7.1.1
