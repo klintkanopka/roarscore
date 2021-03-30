@@ -20,13 +20,9 @@
 estimate_wj <- function(d){
   output <- data.frame(subj = d$subj, visit_age=d$visit_age)
   resp <- construct_response_matrix(d)
-  print('estimate theta')
   output$roar <- mirt::fscores(m_irt, response.pattern=resp, append_response.patter=F)[,1]
-  print('estimate wj raw')
   output$wj_lwid_raw <- predict(m_roar_wj, newdata=output)
-  print('estimate wj ss')
   output$wj_lwid_ss <- predict(m_raw_ss, newdata=output)
-  print('estimate wj pct')
   output$percentile <- pnorm(output$wj_lwid_ss, mean=100, sd=15)
   return(output)
 }
