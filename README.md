@@ -35,4 +35,4 @@ The output will have the following columns:
 - 'wj_lwid_ss': The estimated Woodcock-Johnson Letter-Word Identification standard score. This is currently estiamted from `wj_lwid_raw` and `visit_age` and model paramters are trained on pilot data.
 - `percentile`: The percentile that `wj_lwid_ss` correspondes to, given that WJ standard scores are mean 100 with a standard deviation of 15.
 
-The primary feature of this package are that the models used to estimate `roar`, `wj_lwid_raw', and 'wj_lwid_ss' can be updated without changing the functionality of the package itself. As more data becomes available, these models will be updated.
+The primary feature of this package are that the models used to estimate `roar`, `wj_lwid_raw`, and `wj_lwid_ss` can be updated without changing the functionality of the package itself. As more data becomes available, these models will be updated.
