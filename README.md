@@ -30,9 +30,9 @@ The output will have the following columns:
 
 - `subj`: A unique subject ID. This is unchaged from `d`
 - `visit_age`: The age of the subject in months at the time of testing. This is unchanged from `d`
-- `roar`: The estimated ability of the respondent. This is estimated using a Rasch model with a fixed guessing floor of 0.5 on pilot data. Note that this estimate will only consider responses to items that are in the calibration sample. Having addtiional items or missing responses does not effect functionality, though missing responses will result in less precise estimtes.
-- 'wj_lwid_raw': The estimated raw Woodcock-Johnson Letter-Word Identification score. This is currently estimated from `roar` and `visit_age` and model parameters are trained on pilot data.
-- 'wj_lwid_ss': The estimated Woodcock-Johnson Letter-Word Identification standard score. This is currently estiamted from `wj_lwid_raw` and `visit_age` and model paramters are trained on pilot data.
+- `roar`: The estimated ability of the respondent. This is estimated using a Rasch model with a fixed guessing floor of 0.5 on pilot data using `mirt`. Note that this estimate will only consider responses to items that are in the calibration sample. Having addtiional items or missing responses does not effect functionality, though missing responses will result in less precise estimtes.
+- `wj_lwid_raw`: The estimated raw Woodcock-Johnson Letter-Word Identification score. This is currently estimated from `roar` and `visit_age` and model parameters are trained on pilot data.
+- `wj_lwid_ss`: The estimated Woodcock-Johnson Letter-Word Identification standard score. This is currently estiamted from `wj_lwid_raw` and `visit_age` and model paramters are trained on pilot data.
 - `percentile`: The percentile that `wj_lwid_ss` correspondes to, given that WJ standard scores are mean 100 with a standard deviation of 15.
 
-The primary feature of this package are that the models used to estimate `roar`, `wj_lwid_raw`, and `wj_lwid_ss` can be updated without changing the functionality of the package itself. As more data becomes available, these models will be updated.
+The primary feature of this package are that the models used to estimate `roar`, `wj_lwid_raw`, and `wj_lwid_ss` can be updated without changing the functionality of the package itself. As more data becomes available, these models will be updated. Note also that `roarscore` depends on `mirt`, and will install it if it is not already installed.
