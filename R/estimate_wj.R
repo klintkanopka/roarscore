@@ -16,11 +16,10 @@
 #' ability score, estimated WJ-LWID scores (raw and standard), and estimated
 #' WJ-LWID percentile.
 
-
 estimate_wj <- function(d){
   output <- data.frame(subj = d$subj, visit_age=d$visit_age)
   resp <- construct_response_matrix(d)
-  output$roar <- mirt::fscores(m_irt, response.pattern=resp, append_response.patter=F)[,1]
+  output$roar <- mirt::fscores(m_irt, response.pattern=resp, append_response.pattern=F)[,1]
   output$wj_lwid_raw <- predict(m_roar_wj, newdata=output)
   output$wj_lwid_ss <- predict(m_raw_ss, newdata=output)
   output$percentile <- pnorm(output$wj_lwid_ss, mean=100, sd=15)

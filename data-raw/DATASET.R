@@ -23,7 +23,7 @@ m_irt <- mirt(d_mirt, model=1, itemtype='Rasch', guess=0.5)
 item_names <- names(d_mirt)
 
 # to predict scores, prepare a dataframe with roar ability score called d_roar
-d_roar$roar <- fscores(m_irt)
+d_roar$roar <- fscores(m_irt)[,1]
 m_roar_wj <- lm(wj_lwid_raw ~ roar*visit_age, data=d_roar)
 
 # for raw -> ss conversion, create "training" data named as d_wj_ss
