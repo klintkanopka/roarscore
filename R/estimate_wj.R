@@ -22,6 +22,8 @@ estimate_wj <- function(d){
   output$roar <- mirt::fscores(m_irt, response.pattern=resp, append_response.pattern=F)[,1]
   output$wj_lwid_raw <- predict(m_roar_wj, newdata=output)
   output$wj_lwid_ss <- predict(m_raw_ss, newdata=output)
-  output$percentile <- pnorm(output$wj_lwid_ss, mean=100, sd=15)
+  output$lwid_percentile <- pnorm(output$wj_lwid_ss, mean=100, sd=15)
+  output$wj_brs <- predict(m_raw_brs, newdata=output)
+  output$brs_percentile <- pnorm(output$wj_brs, mean=100, sd=15)
   return(output)
 }
