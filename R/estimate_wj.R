@@ -23,7 +23,9 @@ estimate_wj <- function(d){
   output$wj_lwid_raw <- predict(m_roar_wj, newdata=output)
   output$wj_lwid_ss <- predict(m_raw_ss, newdata=output)
   output$lwid_percentile <- pnorm(output$wj_lwid_ss, mean=100, sd=15)
-  output$wj_brs <- predict(m_raw_brs, newdata=output)
-  output$brs_percentile <- pnorm(output$wj_brs, mean=100, sd=15)
+  output$wj_brs_lm <- predict(m_raw_brs, newdata=output)
+  output$wj_brs_loess <- predict(m_loess_brs, newdata=output)
+  output$brs_lm_per <- pnorm(output$wj_brs_lm, mean=100, sd=15)
+  output$brs_loess_per <- pnorm(output$wj_brs_loess, mean=100, sd=15)
   return(output)
 }

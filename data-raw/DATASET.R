@@ -29,10 +29,13 @@ m_roar_wj <- lm(wj_lwid_raw ~ roar*visit_age, data=d_roar)
 # for raw -> ss conversion, create "training" data named as d_wj_ss
 # requires age in months (continuously valued)
 d_roar <- d_roar %>%
-  select(wj_lwid_ss, wj_brs, visit_age, wj_lwid_raw) %>%
+  select(roar, wj_lwid_ss, wj_brs, visit_age, wj_lwid_raw) %>%
   na.omit()
+
+# add a one step loess from roar + age -> brs/ss
 
 m_raw_ss <- lm(wj_lwid_ss ~ poly(wj_lwid_raw, 2)*poly(visit_age, 2), data=d_roar)
 m_raw_brs <- lm(wj_brs ~ poly(wj_lwid_raw, 2)*poly(visit_age, 2), data=d_roar)
+m_loess_brs <- loess(wj_brs ~ roar + visit_age, data=d_roar)
 
-usethis::use_data(m_irt, m_roar_wj, m_raw_ss, m_raw_brs, item_names, internal = TRUE, overwrite = TRUE)
+usethis::use_data(m_irt, m_roar_wj, m_raw_ss, m_raw_brs, m_loess_brs, item_names, internal = TRUE, overwrite = TRUE)
