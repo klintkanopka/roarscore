@@ -2,7 +2,8 @@
 library(tidyverse)
 library(mirt)
 
-d_roar <- read_csv('~/projects/roar-rt/data/metadata_all_roundeddates_newcodes (1).csv') %>%
+d_roar <- read_csv('data-raw/metadata_all_roundeddates.csv') %>%
+  rename(subj = record_id) %>%
   group_by(subj) %>%
   mutate(n = n()) %>%
   filter(n == 1) %>%
@@ -10,7 +11,7 @@ d_roar <- read_csv('~/projects/roar-rt/data/metadata_all_roundeddates_newcodes (
   filter(visit_age <= 18*12) %>%
   filter(MonthsSinceTesting < 12)
 
-d_resp <- read_csv('~/projects/roar-rt/data/LDT_alldata_wide_v2_newcodes (1).csv') %>%
+d_resp <- read_csv('data-raw/LDT_alldata_wide_v2.csv') %>%
   filter(subj %in% d_roar$subj)
 
 d_roar <- d_roar %>%
